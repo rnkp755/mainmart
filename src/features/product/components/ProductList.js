@@ -29,7 +29,7 @@ const sortOptions = [
 ];
 
 const filters = [
-  
+
   {
     id: "category",
     name: "Category",
@@ -217,18 +217,52 @@ export default function ProductList() {
   const products = useSelector(selectAllProducts);
   const [filter, setFilter] = useState({});
 
-  const handleFilter = (e, section, option) => {
-    const newFilter = { ...filter, [section.id]: option.value };
-    setFilter(newFilter);
-    dispatch(fetchProductsByFiltersAsync(newFilter));
-    console.log(section.id, option.value);
+  const handleFilter = async (e, section, option) => {
+    console.log("Current Filter:", filter);
+
+    console.log("Updating:", section.id, option.value);
+
+    await setFilter((prevState) => {
+      const updatedFilter = { ...prevState };
+      if (e.target.checked) {
+        if (!updatedFilter[section.id]) {
+          updatedFilter[section.id] = [option.value];
+        } else if (!updatedFilter[section.id].includes(option.value)) {
+          updatedFilter[section.id].push(option.value);
+        }
+      } else {
+        if (updatedFilter[section.id]) {
+          updatedFilter[section.id] = updatedFilter[section.id].filter(val => val !== option.value);
+        }
+      }
+      return updatedFilter;
+    });
   };
 
-  const handleSort = (e, option) => {
-    const newFilter = { ...filter, _sort: option.sort, _order:option.order };
-    setFilter(newFilter);
-    dispatch(fetchProductsByFiltersAsync(newFilter));
+  const handleSort = async (e, option) => {
+    console.log(option);
+    await setFilter((prevState) => {
+      const updatedFilter = { ...prevState };
+      if (option.order === "desc") {
+        updatedFilter._sort = "-" + option.sort;
+        console.log("Mai aa gya");
+      }
+      else {
+        updatedFilter._sort = option.sort;
+      }
+      return updatedFilter;
+    });
   };
+
+  useEffect(() => {
+    console.log("Updated Filter:", filter);
+    dispatch(fetchProductsByFiltersAsync(filter));
+  }, [filter]);
+
+
+
+
+
 
   useEffect(() => {
     dispatch(fetchAllProductsAsync());
@@ -381,7 +415,7 @@ export default function ProductList() {
                         <Menu.Item key={option.name}>
                           {({ active }) => (
                             <p
-                            onClick={e=>handleSort(e,option)}
+                              onClick={e => handleSort(e, option)}
                               className={classNames(
                                 option.current
                                   ? "font-medium text-gray-900"
@@ -496,46 +530,46 @@ export default function ProductList() {
                     <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                       {products.map((product) => (
                         <Link to="/product-detail" key={product.id}>
-                        <div className="group relative border-solid border-2 p-2 border-gray-200">
-                          <div className="min-h-60 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
-                            <img
-                              src={product.thumbnail}
-                              alt={product.title}
-                              className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                            />
-                          </div>
-                          <div className="mt-4 flex justify-between">
-                            <div>
-                              <h3 className="text-sm text-gray-700">
-                                <a href={product.thumbnail}>
-                                  <span
-                                    aria-hidden="true"
-                                    className="absolute inset-0"
-                                  />
-                                  {product.title}
-                                </a>
-                              </h3>
-                              <p className="mt-1 text-sm text-gray-500">
-                                <StarIcon className="w-6 h-6 inline"></StarIcon>
-                                <span className=" align-bottom">
-                                  {product.rating}
-                                </span>
-                              </p>
+                          <div className="group relative border-solid border-2 p-2 border-gray-200">
+                            <div className="min-h-60 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
+                              <img
+                                src={product.thumbnail}
+                                alt={product.title}
+                                className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                              />
                             </div>
-                            <div>
-                              <p className="text-sm block font-medium text-gray-900">
-                                $
-                                {Math.round(
-                                  product.price *
+                            <div className="mt-4 flex justify-between">
+                              <div>
+                                <h3 className="text-sm text-gray-700">
+                                  <a href={product.thumbnail}>
+                                    <span
+                                      aria-hidden="true"
+                                      className="absolute inset-0"
+                                    />
+                                    {product.title}
+                                  </a>
+                                </h3>
+                                <p className="mt-1 text-sm text-gray-500">
+                                  <StarIcon className="w-6 h-6 inline"></StarIcon>
+                                  <span className=" align-bottom">
+                                    {product.rating}
+                                  </span>
+                                </p>
+                              </div>
+                              <div>
+                                <p className="text-sm block font-medium text-gray-900">
+                                  $
+                                  {Math.round(
+                                    product.price *
                                     (1 - product.discountPercentage / 100)
-                                )}
-                              </p>
-                              <p className="text-sm block line-through font-medium text-gray-400">
-                                ${product.price}
-                              </p>
+                                  )}
+                                </p>
+                                <p className="text-sm block line-through font-medium text-gray-400">
+                                  ${product.price}
+                                </p>
+                              </div>
                             </div>
-                            </div>
-                            </div>
+                          </div>
                         </Link>
                       ))}
                     </div>
@@ -550,6 +584,7 @@ export default function ProductList() {
           <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
             <div className="flex flex-1 justify-between sm:hidden">
               <a
+
                 href="#"
                 className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
               >
