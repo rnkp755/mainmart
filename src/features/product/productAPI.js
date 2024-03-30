@@ -45,14 +45,18 @@ export function fetchProductsByFilters(filter) {
     else {
       queryString += `${key}=${filter[key]}&`
     }
-    console.log(queryString);
+    console.log("Query string in final api call",queryString);
   }
 
   return new Promise(async (resolve) => {
     //TODO: we will not hard-code server URL here
-    const response = await fetch('http://localhost:8080/products?' + queryString)
+    const url = "http://localhost:8080/products?" + queryString;
+    const response = await fetch(url)
     const data = await response.json()
-    resolve({ data })
+    const finalData = data.data;
+    console.log("Final url", url);
+    console.log("Final data",finalData);
+    resolve({ finalData })
   }
   );
 }
