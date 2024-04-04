@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { Rating } from '@mui/material';
+import CartIcon from './icons';
 
 const ProductPage = () => {
   const [product, setProduct] = useState({
@@ -66,6 +67,7 @@ const ProductPage = () => {
 
   const aboutScrollRef = useRef(null);
   const reviewScrollRef = useRef(null);
+  const recommendationScrollRef = useRef(null);
 
   const scrollToAbout = () => {
     if (aboutScrollRef.current) {
@@ -79,6 +81,11 @@ const ProductPage = () => {
     }
   }
 
+  const scrollToRecommendation = () => {
+    if (recommendationScrollRef.current) {
+      recommendationScrollRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 
 
   const { id } = useParams();
@@ -132,7 +139,7 @@ const ProductPage = () => {
           <div>
             {product.discountPercentage > 0 ? (
               <>
-                <div className='text-4xl font-bold text-black-600'>{priceAfterDiscount.toFixed(2)}</div>
+                <div className='text-4xl font-bold text-black-600'>{`${priceAfterDiscount.toFixed(2)} INR`}</div>
                 <div className='text-gray-400 line-through'>{product.price.toFixed(2)}</div>
                 <div className='text-green-500'>Save {(100 - (priceAfterDiscount / product.price) * 100).toFixed(0)}%</div>
               </>
@@ -146,14 +153,22 @@ const ProductPage = () => {
             <button className='bg-gray-200 py-2 px-4 rounded-lg text-violet-800 text-3xl' onClick={() => setQty((prev) => prev + 1)}>+</button>
           </div>
           <div className='flex justify-between'>
-            <button className=' bg-gray-300 py-3 px-10 rounded-full text-white font-semibold flex items-center justify-center gap-2' onClick={scrollToAbout}>ABOUT</button>
-            <button className='bg-gray-300 py-3 px-10 rounded-full text-white font-semibold flex items-center justify-center gap-2'>DESCRIPTION</button>
-            <button className='bg-gray-300 py-3 px-10 rounded-full text-white font-semibold flex items-center justify-center gap-2' onClick={scrollToReview}>REVIEWS</button>
-            <button className='bg-gray-300 py-3 px-10 rounded-full text-white font-semibold flex items-center justify-center gap-2'>SIMILAR</button>
+            <button className=' bg-orange-500 py-3 px-7 rounded-full text-white font-semibold flex items-center justify-center gap-2' onClick={scrollToAbout}>ABOUT</button>
+            <button className='bg-violet-500 py-3 px-7 rounded-full text-white font-semibold flex items-center justify-center gap-2' onClick={scrollToRecommendation}>RECOMMENDATION</button>
+            <button className='bg-orange-500 py-3 px-7 rounded-full text-white font-semibold flex items-center justify-center gap-2' onClick={scrollToReview}>REVIEWS</button>
+            <button className='bg-violet-500 py-3 px-7 rounded-full text-white font-semibold flex items-center justify-center gap-2'>SIMILAR</button>
           </div>
-          <button className='bg-violet-800 text-white font-semibold py-3 px-16 rounded-xl flex items-center justify-center gap-2'>
-            <span>Add to Cart</span>
-          </button>
+          <div className='flex flex-row justify-evenly'>
+            <button className='bg-pink-800 text-white font-semibold py-3 px-16 rounded-xl flex items-center justify-center gap-2'>
+              <span>Buy Now</span>
+            </button>
+            <button className='bg-violet-800 text-white font-semibold py-3 px-16 rounded-xl flex items-center justify-center gap-2'>
+              <span>Add to Cart</span>
+            </button>
+            <div className="cursor-pointer">
+              <CartIcon color="pink" width="10" height="10" />
+            </div>
+          </div>
         </div>
       </div>
       <section className="my-8 bg-white rounded-md shadow-xl" ref={aboutScrollRef}>
@@ -171,21 +186,7 @@ const ProductPage = () => {
             <div className="flex flex-row">
               <div className="rating flex-1 mx-14">
                 <div className="flex items-center mb-2">
-                  <svg className="w-4 h-4 text-yellow-300 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                  </svg>
-                  <svg className="w-4 h-4 text-yellow-300 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                  </svg>
-                  <svg className="w-4 h-4 text-yellow-300 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                  </svg>
-                  <svg className="w-4 h-4 text-yellow-300 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                  </svg>
-                  <svg className="w-4 h-4 text-gray-300 me-1 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                  </svg>
+                  <Rating name="read-only" value={product.rating} readOnly precision={0.5} />
                   <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">{product.rating}</p>
                   <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">out of</p>
                   <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">5</p>
@@ -255,6 +256,14 @@ const ProductPage = () => {
 
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+      <section className="my-8 bg-white rounded-md shadow-xl" ref={recommendationScrollRef}>
+        <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-8 lg:px-6">
+          <div className="max-w-screen-lg text-black sm:text-lg ">
+            <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 ">Recommended Products</h2>
+
           </div>
         </div>
       </section>
