@@ -33,6 +33,7 @@ export const fetchCategoriesAsync = createAsyncThunk(
     return response.data;
   }
 );
+
 export const fetchProductsByFiltersAsync = createAsyncThunk(
   'product/fetchProductsByFilters',
   async (filter) => {
@@ -79,14 +80,14 @@ export const productSlice = createSlice({
       })
       .addCase(fetchBrandsAsync.fulfilled, (state, action) => {
         state.status = 'idle';
-        state.products = action.payload;
+        state.brands = action.payload;
       })
       .addCase(fetchCategoriesAsync.pending, (state) => {
         state.status = 'loading';
       })
       .addCase(fetchCategoriesAsync.fulfilled, (state, action) => {
         state.status = 'idle';
-        state.products = action.payload;
+        state.categories = action.payload;
       });
   },
 });

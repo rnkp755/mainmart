@@ -379,8 +379,7 @@ function MobileFilter({
     </Transition.Root>
   );
 }
-function DesktopFilter({ handleFilter, filters }) {
-  return (
+function DesktopFilter({ handleFilter, filters }) { return (
     <form className="hidden lg:block">
       {filters.map((section) => (
         <Disclosure
