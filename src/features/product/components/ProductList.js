@@ -53,7 +53,7 @@ export default function ProductList() {
       options: categories,
     },
     {
-      id: "brands",
+      id: "brand",
       name: "Brands",
       options: brands,
     },
@@ -130,7 +130,7 @@ export default function ProductList() {
   useEffect(() => {
     dispatch(fetchBrandsAsync())
     dispatch(fetchCategoriesAsync())
-  },[])
+  }, [])
 
   useEffect(() => {
     const pagination = { _page: page, _per_page: ITEMS_PER_PAGE || 9 }; // Fixing default value assignment
@@ -242,7 +242,7 @@ export default function ProductList() {
 
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
               <DesktopFilter handleFilter={handleFilter}
-              filters={filters}
+                filters={filters}
               ></DesktopFilter>
 
               <div className="lg:col-span-3">
@@ -379,7 +379,8 @@ function MobileFilter({
     </Transition.Root>
   );
 }
-function DesktopFilter({ handleFilter, filters }) { return (
+function DesktopFilter({ handleFilter, filters }) {
+  return (
     <form className="hidden lg:block">
       {filters.map((section) => (
         <Disclosure
@@ -502,8 +503,8 @@ function Pagination({ page, setPage, handlePage, totalItems = 100 }) {
                   : !shouldShowPrevPage &&
                     !shouldShowPage &&
                     !shouldShowTwoPagesBack
-                  ? null
-                  : ".";
+                    ? null
+                    : ".";
                 const additionalClass =
                   content === null ? "hidden" : "";
                 return (
@@ -517,8 +518,8 @@ function Pagination({ page, setPage, handlePage, totalItems = 100 }) {
                       : !checkWhetherPageShouldBeShown(index - 1) &&
                         !checkWhetherPageShouldBeShown(index) &&
                         !checkWhetherPageShouldBeShown(index - 2)
-                      ? null
-                      : "."}
+                        ? null
+                        : "."}
                   </div>
                 );
               }
@@ -602,6 +603,6 @@ function ProductGrid({ products }) {
           ))}
         </div>
       </div>
-    </div>
+    </div >
   );
 }
