@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { Rating } from '@mui/material';
 import CartIcon from './icons';
+import CarouselControlsInside from './Carousel';
+
 
 const ProductPage = () => {
   const [product, setProduct] = useState({
@@ -16,9 +18,42 @@ const ProductPage = () => {
     category: 'Loading...',
     images: [],
   });
+
   const [priceAfterDiscount, setPriceAfterDiscount] = useState(0);
   const [thumbnail, setThumbnail] = useState('');
   const [qty, setQty] = useState(1);
+  const [recommendedProducts, setRecommendedProducts] = useState([])
+  const { id } = useParams();
+
+
+  useEffect(() => {
+    const fetchProductDetailsAndRecommendations = async () => {
+      try {
+        const response = await fetch(`http://localhost:8080/products/${id}`);
+        const data = await response.json();
+        await setProduct(data);
+        setThumbnail(data?.images?.length > 0 ? data.images[0] : '');
+        setPriceAfterDiscount(data?.price - data.price * data.discountPercentage / 100);
+
+        console.log(product); // This will log the previous state
+        // Fetch recommended products
+        // How to ensure that the product is loaded before fetching recommended products?
+        if (product?.category && product.category !== "Loading...") {
+          const url = `http://localhost:8080/products?category=${product.category}&_sort=-rating,discountPercentage,price`
+          console.log(url);
+          const response = await fetch(url);
+          const data = await response.json();
+          console.log("Recommended", data);
+          await setRecommendedProducts(data);
+        }
+
+        await addTemporaryReviews()
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchProductDetailsAndRecommendations();
+  }, [id]);
 
   // Adding temporary reviews
   const addTemporaryReviews = () => {
@@ -87,32 +122,6 @@ const ProductPage = () => {
     }
   }
 
-
-  const { id } = useParams();
-
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const response = await fetch(`http://localhost:8080/products/${id}`);
-        const data = await response.json();
-        setProduct(data);
-        console.log(product);
-        setThumbnail(data.images.length > 0 ? data.images[0] : '');
-        setPriceAfterDiscount(data.price - data.price * data.discountPercentage / 100);
-
-        addTemporaryReviews();
-      } catch (error) {
-        console.error('Error fetching product:', error);
-      }
-    };
-
-    fetchProduct();
-    console.log(product);
-  }, [id]);
-
-
-
-
   return (
     <>
       <div className='flex flex-col justify-between lg:flex-row gap-16 lg:items-center'>
@@ -148,7 +157,7 @@ const ProductPage = () => {
             )}
           </div>
           <div className='flex items-center gap-2'>
-            <button className='bg-gray-200 py-2 px-5 rounded-lg text-violet-800 text-3xl' onClick={() => setQty((prev) => prev + 1)}>-</button>
+            <button className='bg-gray-200 py-2 px-5 rounded-lg text-violet-800 text-3xl' onClick={() => setQty((prev) => prev > 1 ? prev - 1 : prev)}>-</button>
             <span className='py-4 px-6 rounded-lg'>{qty}</span>
             <button className='bg-gray-200 py-2 px-4 rounded-lg text-violet-800 text-3xl' onClick={() => setQty((prev) => prev + 1)}>+</button>
           </div>
@@ -260,10 +269,14 @@ const ProductPage = () => {
         </div>
       </section>
       <section className="my-8 bg-white rounded-md shadow-xl" ref={recommendationScrollRef}>
-        <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-8 lg:px-6">
+        <div className="py-8 mx-4 max-w-screen-xl px-[4.5rem]">
           <div className="max-w-screen-lg text-black sm:text-lg ">
             <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 ">Recommended Products</h2>
-
+            {
+              recommendedProducts && Array.isArray(recommendedProducts) && recommendedProducts.map((product) => (
+                <h1>{product.title}</h1>
+              ))
+            }
           </div>
         </div>
       </section>
