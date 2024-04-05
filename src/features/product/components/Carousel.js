@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react"
 import Glide from "@glidejs/glide"
+import { Link } from "react-router-dom"
 import { Rating } from '@mui/material';
-import { Link } from "react-router-dom";
 
 export default function CarouselControlsInside({ recommendedProducts }) {
 
@@ -43,16 +43,22 @@ export default function CarouselControlsInside({ recommendedProducts }) {
                         {/*    <!-- Slides --> */}
                         <div className="overflow-hidden" data-glide-el="track">
                               <ul className="whitespace-no-wrap flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] relative flex w-full overflow-hidden p-0">
+                                    <li className="hidden">
+                                          <img
+                                                src="https://Tailwindmix.b-cdn.net/carousel/carousel-image-01.jpg"
+                                                className="m-auto max-h-full w-full max-w-full"
+                                          />
+                                    </li>
                                     {
                                           Array.isArray(recommendedProducts) && recommendedProducts.map((product, index) => (
-                                                <li key={product.id} className="glide__slide w-full h-full">
+                                                <li key={product.id} className="glide__slide">
                                                       <Link to={`/product-detail/${product.id}`} key={product.id}>
                                                             <div className="group relative border-solid border-2 p-2 border-gray-200">
                                                                   <div className="min-h-60 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
                                                                         <img
                                                                               src={product.thumbnail}
                                                                               alt={product.title}
-                                                                              className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                                                                              className="m-auto max-h-full w-full max-w-full"
                                                                         />
                                                                   </div>
                                                                   <div className="flex flex-col items-center mt-4">
@@ -98,6 +104,8 @@ export default function CarouselControlsInside({ recommendedProducts }) {
                                                 </li>
                                           ))
                                     }
+
+
                               </ul>
                         </div>
                         {/*    <!-- Controls --> */}

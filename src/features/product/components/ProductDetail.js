@@ -29,31 +29,32 @@ const ProductPage = () => {
   useEffect(() => {
     const fetchProductDetailsAndRecommendations = async () => {
       try {
+        // Fetch product details
         const response = await fetch(`http://localhost:8080/products/${id}`);
-        const data = await response.json();
-        await setProduct(data);
-        setThumbnail(data?.images?.length > 0 ? data.images[0] : '');
-        setPriceAfterDiscount(data?.price - data.price * data.discountPercentage / 100);
+        const productData = await response.json();
 
-        console.log(product); // This will log the previous state
-        // Fetch recommended products
-        // How to ensure that the product is loaded before fetching recommended products?
-        if (product?.category && product.category !== "Loading...") {
-          const url = `http://localhost:8080/products?category=${product.category}&_sort=-rating,discountPercentage,price`
-          console.log(url);
-          const response = await fetch(url);
-          const data = await response.json();
-          console.log("Recommended", data);
-          await setRecommendedProducts(data);
+        // Update product state
+        setProduct(productData);
+        setThumbnail(productData.images?.length > 0 ? productData.images[0] : '');
+        setPriceAfterDiscount(productData.price - productData.price * productData.discountPercentage / 100);
+
+        // Here we use productData directly instead of the product state
+        if (productData.category && productData.category !== "Loading...") {
+          const url = `http://localhost:8080/products?category=${productData.category}&_sort=-rating,discountPercentage,price`
+          const recommendedResponse = await fetch(url);
+          const recommendedData = await recommendedResponse.json();
+          setRecommendedProducts(recommendedData);
         }
 
-        await addTemporaryReviews()
+        // Add temporary reviews
+        addTemporaryReviews();
       } catch (error) {
         console.log(error);
       }
     }
     fetchProductDetailsAndRecommendations();
   }, [id]);
+
 
   // Adding temporary reviews
   const addTemporaryReviews = () => {
@@ -273,9 +274,9 @@ const ProductPage = () => {
           <div className="max-w-screen-lg text-black sm:text-lg ">
             <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 ">Recommended Products</h2>
             {
-              recommendedProducts && Array.isArray(recommendedProducts) && recommendedProducts.map((product) => (
-                <h1>{product.title}</h1>
-              ))
+              recommendedProducts && Array.isArray(recommendedProducts) ? (
+                <CarouselControlsInside recommendedProducts={recommendedProducts} />
+              ) : null
             }
           </div>
         </div>
