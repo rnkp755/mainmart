@@ -3,6 +3,32 @@ import { useParams } from 'react-router-dom';
 import { Rating } from '@mui/material';
 import CartIcon from './icons';
 import CarouselControlsInside from './Carousel';
+import { addToCartAsync } from '../../cart/cartSlice';
+import { selectLoggedInUser } from '../../auth/authSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAllProductByIdAsync, selectProductById } from '../productSlice';
+const colors = [
+  { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
+  { name: 'Gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400' },
+  { name: 'Black', class: 'bg-gray-900', selectedClass: 'ring-gray-900' },
+];
+const sizes = [
+  { name: 'XXS', inStock: false },
+  { name: 'XS', inStock: true },
+  { name: 'S', inStock: true },
+  { name: 'M', inStock: true },
+  { name: 'L', inStock: true },
+  { name: 'XL', inStock: true },
+  { name: '2XL', inStock: true },
+  { name: '3XL', inStock: true },
+];
+const highlights = [
+  'Hand cut and sewn locally',
+  'Dyed with our proprietary colors',
+  'Pre-washed & pre-shrunk',
+  'Ultra-soft 100% cotton',
+]
+
 
 
 const ProductPage = () => {
@@ -24,6 +50,14 @@ const ProductPage = () => {
   const [qty, setQty] = useState(1);
   const [recommendedProducts, setRecommendedProducts] = useState([])
   const { id } = useParams();
+  const [selectedColor, setSelectedColor] = useState(colors[0]);
+  const [selectedSize, setSelectedSize] = useState(sizes[2]);
+  const user = useSelector(selectLoggedInUser)
+  const dispatch = useDispatch();
+  const handleCart = (e)=>{
+    e.preventDefault();
+    dispatch(addToCartAsync({...product,quantity:1,user:user.id })) 
+  }
 
 
   useEffect(() => {
@@ -172,7 +206,10 @@ const ProductPage = () => {
             <button className='bg-pink-800 text-white font-semibold py-3 px-16 rounded-xl flex items-center justify-center gap-2'>
               <span>Buy Now</span>
             </button>
-            <button className='bg-violet-800 text-white font-semibold py-3 px-16 rounded-xl flex items-center justify-center gap-2'>
+            <button 
+             onClick={handleCart}
+             type="submit"
+            className='bg-violet-800 text-white font-semibold py-3 px-16 rounded-xl flex items-center justify-center gap-2'>
               <span>Add to Cart</span>
             </button>
             <div className="cursor-pointer">
