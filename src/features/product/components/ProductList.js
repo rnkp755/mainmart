@@ -19,6 +19,7 @@ import {
 import CartIcon from "./icons";
 import { Link } from "react-router-dom";
 
+import { Rating } from '@mui/material';
 import {
   ChevronDownIcon,
   FunnelIcon,
@@ -542,7 +543,7 @@ function Pagination({ page, setPage, handlePage, totalItems = 100 }) {
     </div>
   );
 }
-function ProductGrid({ products }) {
+export function ProductGrid({ products }) {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-0 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
@@ -584,7 +585,12 @@ function ProductGrid({ products }) {
                     </h1>
                   </div>
                   <div className="flex mt-1 items-center">
-                    <StarIcon className="w-6 h-6 text-yellow-400" />
+                    <Rating
+                      name="read-only"
+                      value={product.rating}
+                      readOnly
+                      precision={0.5}
+                    />
                     <span className="text-xs text-gray-500 align-bottom ml-1">
                       {product.rating}
                     </span>
@@ -595,7 +601,7 @@ function ProductGrid({ products }) {
                     Add to Cart
                   </button>
                   <div className="col-span-1 flex justify-center items-center">
-                    <CartIcon color="pink" className="w-10 h-10" />
+                    <CartIcon color="pink" width="6" height="6" />
                   </div>
                 </div>{" "}
               </div>
