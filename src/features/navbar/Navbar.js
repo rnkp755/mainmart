@@ -258,6 +258,9 @@ function NavBar({ children }) {
   return (
     <>
       <div className="min-h-full">
+        <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
+          Get free delivery on orders over 500
+        </p>
         <Disclosure as="nav" className="bg-white">
           {({ open }) => (
             <>

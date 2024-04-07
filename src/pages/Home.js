@@ -3,6 +3,7 @@ import ProductList from "../features/product/components/ProductList";
 import Navigation from "../features/navbar/Navigation";
 import ImageCarousel from "../features/carousel/Categories.js";
 import Slider from "../features/slider/Slider.js"
+import Tabs from "../features/Tabs/Tabs.js"
 
 function Home() {
     let homePageSlides = [
@@ -18,6 +19,7 @@ function Home() {
                 <div className="flex flex-col max-h-[45vh]">
                     <Slider slides={homePageSlides} />
                 </div>
+                <Tabs />
                 <ImageCarousel />
                 <ProductList></ProductList>
             </NavBar>
