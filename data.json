@@ -2494,21 +2494,50 @@
       "user": "b03a"
     },
     {
-      "id": "5ce6",
-      "title": "Non-Alcoholic Concentrated Perfume Oil",
-      "description": "Original Al Munakh® by Mahal Al Musk | Our Impression of Climate | 6ml Non-Alcoholic Concentrated Perfume Oil",
-      "price": 120,
-      "discountPercentage": 15.6,
-      "rating": 4.21,
-      "stock": 114,
-      "brand": "Al Munakh",
-      "category": "fragrances",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/14/thumbnail.jpg",
+      "id": "ca2a",
+      "title": "Samsung Universe 9",
+      "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+      "price": 1249,
+      "discountPercentage": 15.46,
+      "rating": 4.09,
+      "stock": 36,
+      "brand": "Samsung",
+      "category": "smartphones",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/3/thumbnail.jpg",
       "images": [
-        "https://cdn.dummyjson.com/product-images/14/1.jpg",
-        "https://cdn.dummyjson.com/product-images/14/2.jpg",
-        "https://cdn.dummyjson.com/product-images/14/3.jpg",
-        "https://cdn.dummyjson.com/product-images/14/thumbnail.jpg"
+        "https://cdn.dummyjson.com/product-images/3/1.jpg"
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "avatar": "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          "user": "John Doe",
+          "joinedOn": "August 2014",
+          "rating": 4.5,
+          "reviewTitle": "Thinking to buy another one!",
+          "reviewDate": "March 3, 2017",
+          "reviewMsg": "This is my third Invicta Pro Diver. They are just fantastic value for money. This one arrived yesterday and the first thing I did was set the time, popped on an identical strap from another Invicta and went in the shower with it to test the waterproofing.... No problems. It is obviously not the same build quality as those very expensive watches. But that is like comparing a Citroën to a Ferrari. This watch was well under £100! An absolute bargain."
+        },
+        {
+          "id": 2,
+          "avatar": "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          "user": "Alice Doe",
+          "joinedOn": "August 2014",
+          "rating": 3,
+          "reviewTitle": "Thinking to buy another one!",
+          "reviewDate": "March 3, 2017",
+          "reviewMsg": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur earum, porro, totam, doloribus maxime maiores culpa facere aliquid accusamus iste nobis natus magni? Labore, iste. Voluptatem, earum magnam! Qui, dolor?"
+        },
+        {
+          "id": 3,
+          "avatar": "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          "user": "Bob Doe",
+          "joinedOn": "August 2014",
+          "rating": 4.7,
+          "reviewTitle": "Thinking to buy another one!",
+          "reviewDate": "March 3, 2017",
+          "reviewMsg": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae mollitia quaerat aperiam aliquid aut tenetur temporibus? Dicta, autem commodi. Quia totam ut, inventore explicabo omnis harum aut id laudantium cupiditate!"
+        }
       ],
       "quantity": 1,
       "user": "b03a"
