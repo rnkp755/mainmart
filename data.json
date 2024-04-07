@@ -2446,6 +2446,15 @@
           "city": "Alwar",
           "state": "Rajasthan",
           "pinCode": "301001"
+        },
+        {
+          "name": "capibara",
+          "email": "capibara@gmail.com",
+          "phone": "9876578980",
+          "street": "block 4 gate 2",
+          "city": "jaipur",
+          "state": "Rajasthan",
+          "pinCode": "30008"
         }
       ]
     },
@@ -2464,183 +2473,291 @@
   ],
   "cart": [
     {
-      "id": "73bd",
-      "title": "iPhone 9",
-      "description": "An apple mobile which is nothing like apple",
-      "price": 549,
-      "discountPercentage": 12.96,
-      "rating": 4.69,
-      "stock": 94,
-      "brand": "Apple",
-      "category": "smartphones",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
+      "id": "83f4",
+      "title": "Hyaluronic Acid Serum",
+      "description": "L'OrÃ©al Paris introduces Hyaluron Expert Replumping Serum formulated with 1.5% Hyaluronic Acid",
+      "price": 19,
+      "discountPercentage": 13.31,
+      "rating": 4.83,
+      "stock": 110,
+      "brand": "L'Oreal Paris",
+      "category": "skincare",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/16/thumbnail.jpg",
       "images": [
-        "https://cdn.dummyjson.com/product-images/1/1.jpg",
-        "https://cdn.dummyjson.com/product-images/1/2.jpg",
-        "https://cdn.dummyjson.com/product-images/1/3.jpg",
-        "https://cdn.dummyjson.com/product-images/1/4.jpg",
-        "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
-      ],
-      "reviews": [
-        {
-          "id": 1,
-          "avatar": "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-          "user": "John Doe",
-          "joinedOn": "August 2014",
-          "rating": 4.5,
-          "reviewTitle": "Thinking to buy another one!",
-          "reviewDate": "March 3, 2017",
-          "reviewMsg": "This is my third Invicta Pro Diver. They are just fantastic value for money. This one arrived yesterday and the first thing I did was set the time, popped on an identical strap from another Invicta and went in the shower with it to test the waterproofing.... No problems. It is obviously not the same build quality as those very expensive watches. But that is like comparing a Citroën to a Ferrari. This watch was well under £100! An absolute bargain."
-        },
-        {
-          "id": 2,
-          "avatar": "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-          "user": "Alice Doe",
-          "joinedOn": "August 2014",
-          "rating": 3,
-          "reviewTitle": "Thinking to buy another one!",
-          "reviewDate": "March 3, 2017",
-          "reviewMsg": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur earum, porro, totam, doloribus maxime maiores culpa facere aliquid accusamus iste nobis natus magni? Labore, iste. Voluptatem, earum magnam! Qui, dolor?"
-        },
-        {
-          "id": 3,
-          "avatar": "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-          "user": "Bob Doe",
-          "joinedOn": "August 2014",
-          "rating": 4.7,
-          "reviewTitle": "Thinking to buy another one!",
-          "reviewDate": "March 3, 2017",
-          "reviewMsg": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae mollitia quaerat aperiam aliquid aut tenetur temporibus? Dicta, autem commodi. Quia totam ut, inventore explicabo omnis harum aut id laudantium cupiditate!"
-        }
+        "https://cdn.dummyjson.com/product-images/16/1.png",
+        "https://cdn.dummyjson.com/product-images/16/2.webp",
+        "https://cdn.dummyjson.com/product-images/16/3.jpg",
+        "https://cdn.dummyjson.com/product-images/16/4.jpg",
+        "https://cdn.dummyjson.com/product-images/16/thumbnail.jpg"
       ],
       "quantity": 1,
       "user": "b03a"
     },
     {
-      "id": "50c2",
-      "title": "iPhone X",
-      "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-      "price": 899,
-      "discountPercentage": 17.94,
-      "rating": 4.44,
-      "stock": 34,
-      "brand": "Apple",
-      "category": "smartphones",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
+      "id": "5ce6",
+      "title": "Non-Alcoholic Concentrated Perfume Oil",
+      "description": "Original Al Munakh® by Mahal Al Musk | Our Impression of Climate | 6ml Non-Alcoholic Concentrated Perfume Oil",
+      "price": 120,
+      "discountPercentage": 15.6,
+      "rating": 4.21,
+      "stock": 114,
+      "brand": "Al Munakh",
+      "category": "fragrances",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/14/thumbnail.jpg",
       "images": [
-        "https://cdn.dummyjson.com/product-images/2/1.jpg",
-        "https://cdn.dummyjson.com/product-images/2/2.jpg",
-        "https://cdn.dummyjson.com/product-images/2/3.jpg",
-        "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
+        "https://cdn.dummyjson.com/product-images/14/1.jpg",
+        "https://cdn.dummyjson.com/product-images/14/2.jpg",
+        "https://cdn.dummyjson.com/product-images/14/3.jpg",
+        "https://cdn.dummyjson.com/product-images/14/thumbnail.jpg"
       ],
-      "reviews": [
+      "quantity": 1,
+      "user": "b03a"
+    }
+  ],
+  "orders": [
+    {
+      "id": "bc9d",
+      "items": [
         {
-          "id": 1,
-          "avatar": "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-          "user": "John Doe",
-          "joinedOn": "August 2014",
-          "rating": 4.5,
-          "reviewTitle": "Thinking to buy another one!",
-          "reviewDate": "March 3, 2017",
-          "reviewMsg": "This is my third Invicta Pro Diver. They are just fantastic value for money. This one arrived yesterday and the first thing I did was set the time, popped on an identical strap from another Invicta and went in the shower with it to test the waterproofing.... No problems. It is obviously not the same build quality as those very expensive watches. But that is like comparing a Citroën to a Ferrari. This watch was well under £100! An absolute bargain."
+          "id": "093a",
+          "title": "Samsung Universe 9",
+          "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+          "price": 1249,
+          "discountPercentage": 15.46,
+          "rating": 4.09,
+          "stock": 36,
+          "brand": "Samsung",
+          "category": "smartphones",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/3/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/3/1.jpg"
+          ],
+          "quantity": 1,
+          "user": "b03a"
         },
         {
-          "id": 2,
-          "avatar": "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-          "user": "Alice Doe",
-          "joinedOn": "August 2014",
-          "rating": 3,
-          "reviewTitle": "Thinking to buy another one!",
-          "reviewDate": "March 3, 2017",
-          "reviewMsg": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur earum, porro, totam, doloribus maxime maiores culpa facere aliquid accusamus iste nobis natus magni? Labore, iste. Voluptatem, earum magnam! Qui, dolor?"
-        },
-        {
-          "id": 3,
-          "avatar": "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-          "user": "Bob Doe",
-          "joinedOn": "August 2014",
-          "rating": 4.7,
-          "reviewTitle": "Thinking to buy another one!",
-          "reviewDate": "March 3, 2017",
-          "reviewMsg": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae mollitia quaerat aperiam aliquid aut tenetur temporibus? Dicta, autem commodi. Quia totam ut, inventore explicabo omnis harum aut id laudantium cupiditate!"
+          "id": "f93f",
+          "title": "Brown Perfume",
+          "description": "Royal_Mirage Sport Brown Perfume for Men & Women - 120ml",
+          "price": 40,
+          "discountPercentage": 15.66,
+          "rating": 4,
+          "stock": 52,
+          "brand": "Royal_Mirage",
+          "category": "fragrances",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/12/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/12/1.jpg",
+            "https://cdn.dummyjson.com/product-images/12/2.jpg",
+            "https://cdn.dummyjson.com/product-images/12/3.png",
+            "https://cdn.dummyjson.com/product-images/12/4.jpg",
+            "https://cdn.dummyjson.com/product-images/12/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": "b03a"
         }
       ],
-      "quantity": 1,
-      "user": "b03a"
+      "totalAmount": 1289,
+      "totalItems": 2,
+      "user": {
+        "id": "b03a",
+        "email": "test@gmail.com",
+        "password": "Test1234",
+        "addresses": [
+          {
+            "name": "shreya",
+            "email": "test@gmail.com",
+            "phone": "8955313837",
+            "street": "test",
+            "city": "Alwar",
+            "state": "Rajasthan",
+            "pinCode": "301001"
+          },
+          {
+            "name": "capibara",
+            "email": "capibara@gmail.com",
+            "phone": "9876578980",
+            "street": "block 4 gate 2",
+            "city": "jaipur",
+            "state": "Rajasthan",
+            "pinCode": "30008"
+          }
+        ]
+      },
+      "paymentMethod": "card",
+      "selectedAddress": {
+        "name": "shreya",
+        "email": "test@gmail.com",
+        "phone": "8955313837",
+        "street": "test",
+        "city": "Alwar",
+        "state": "Rajasthan",
+        "pinCode": "301001"
+      }
     },
     {
-      "id": "e317",
-      "title": "iPhone 9",
-      "description": "An apple mobile which is nothing like apple",
-      "price": 549,
-      "discountPercentage": 12.96,
-      "rating": 4.69,
-      "stock": 94,
-      "brand": "Apple",
-      "category": "smartphones",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/1/1.jpg",
-        "https://cdn.dummyjson.com/product-images/1/2.jpg",
-        "https://cdn.dummyjson.com/product-images/1/3.jpg",
-        "https://cdn.dummyjson.com/product-images/1/4.jpg",
-        "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
-      ],
-      "quantity": 1,
-      "user": "b03a"
-    },
-    {
-      "id": "4961",
-      "title": "iPhone 9",
-      "description": "An apple mobile which is nothing like apple",
-      "price": 549,
-      "discountPercentage": 12.96,
-      "rating": 4.69,
-      "stock": 94,
-      "brand": "Apple",
-      "category": "smartphones",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/1/1.jpg",
-        "https://cdn.dummyjson.com/product-images/1/2.jpg",
-        "https://cdn.dummyjson.com/product-images/1/3.jpg",
-        "https://cdn.dummyjson.com/product-images/1/4.jpg",
-        "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
-      ],
-      "reviews": [
+      "id": "819f",
+      "items": [
         {
-          "id": 1,
-          "avatar": "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-          "user": "John Doe",
-          "joinedOn": "August 2014",
-          "rating": 4.5,
-          "reviewTitle": "Thinking to buy another one!",
-          "reviewDate": "March 3, 2017",
-          "reviewMsg": "This is my third Invicta Pro Diver. They are just fantastic value for money. This one arrived yesterday and the first thing I did was set the time, popped on an identical strap from another Invicta and went in the shower with it to test the waterproofing.... No problems. It is obviously not the same build quality as those very expensive watches. But that is like comparing a Citroën to a Ferrari. This watch was well under £100! An absolute bargain."
+          "id": "093a",
+          "title": "Samsung Universe 9",
+          "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+          "price": 1249,
+          "discountPercentage": 15.46,
+          "rating": 4.09,
+          "stock": 36,
+          "brand": "Samsung",
+          "category": "smartphones",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/3/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/3/1.jpg"
+          ],
+          "quantity": 1,
+          "user": "b03a"
         },
         {
-          "id": 2,
-          "avatar": "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-          "user": "Alice Doe",
-          "joinedOn": "August 2014",
-          "rating": 3,
-          "reviewTitle": "Thinking to buy another one!",
-          "reviewDate": "March 3, 2017",
-          "reviewMsg": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur earum, porro, totam, doloribus maxime maiores culpa facere aliquid accusamus iste nobis natus magni? Labore, iste. Voluptatem, earum magnam! Qui, dolor?"
-        },
-        {
-          "id": 3,
-          "avatar": "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-          "user": "Bob Doe",
-          "joinedOn": "August 2014",
-          "rating": 4.7,
-          "reviewTitle": "Thinking to buy another one!",
-          "reviewDate": "March 3, 2017",
-          "reviewMsg": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae mollitia quaerat aperiam aliquid aut tenetur temporibus? Dicta, autem commodi. Quia totam ut, inventore explicabo omnis harum aut id laudantium cupiditate!"
+          "id": "f93f",
+          "title": "Brown Perfume",
+          "description": "Royal_Mirage Sport Brown Perfume for Men & Women - 120ml",
+          "price": 40,
+          "discountPercentage": 15.66,
+          "rating": 4,
+          "stock": 52,
+          "brand": "Royal_Mirage",
+          "category": "fragrances",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/12/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/12/1.jpg",
+            "https://cdn.dummyjson.com/product-images/12/2.jpg",
+            "https://cdn.dummyjson.com/product-images/12/3.png",
+            "https://cdn.dummyjson.com/product-images/12/4.jpg",
+            "https://cdn.dummyjson.com/product-images/12/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": "b03a"
         }
       ],
-      "quantity": 1,
-      "user": "b03a"
+      "totalAmount": 1289,
+      "totalItems": 2,
+      "user": {
+        "id": "b03a",
+        "email": "test@gmail.com",
+        "password": "Test1234",
+        "addresses": [
+          {
+            "name": "shreya",
+            "email": "test@gmail.com",
+            "phone": "8955313837",
+            "street": "test",
+            "city": "Alwar",
+            "state": "Rajasthan",
+            "pinCode": "301001"
+          },
+          {
+            "name": "capibara",
+            "email": "capibara@gmail.com",
+            "phone": "9876578980",
+            "street": "block 4 gate 2",
+            "city": "jaipur",
+            "state": "Rajasthan",
+            "pinCode": "30008"
+          }
+        ]
+      },
+      "paymentMethod": "null",
+      "selectedAddress": {
+        "name": "shreya",
+        "email": "test@gmail.com",
+        "phone": "8955313837",
+        "street": "test",
+        "city": "Alwar",
+        "state": "Rajasthan",
+        "pinCode": "301001"
+      }
+    },
+    {
+      "id": "c72c",
+      "items": [
+        {
+          "id": "83f4",
+          "title": "Hyaluronic Acid Serum",
+          "description": "L'OrÃ©al Paris introduces Hyaluron Expert Replumping Serum formulated with 1.5% Hyaluronic Acid",
+          "price": 19,
+          "discountPercentage": 13.31,
+          "rating": 4.83,
+          "stock": 110,
+          "brand": "L'Oreal Paris",
+          "category": "skincare",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/16/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/16/1.png",
+            "https://cdn.dummyjson.com/product-images/16/2.webp",
+            "https://cdn.dummyjson.com/product-images/16/3.jpg",
+            "https://cdn.dummyjson.com/product-images/16/4.jpg",
+            "https://cdn.dummyjson.com/product-images/16/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": "b03a"
+        },
+        {
+          "id": "5ce6",
+          "title": "Non-Alcoholic Concentrated Perfume Oil",
+          "description": "Original Al Munakh® by Mahal Al Musk | Our Impression of Climate | 6ml Non-Alcoholic Concentrated Perfume Oil",
+          "price": 120,
+          "discountPercentage": 15.6,
+          "rating": 4.21,
+          "stock": 114,
+          "brand": "Al Munakh",
+          "category": "fragrances",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/14/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/14/1.jpg",
+            "https://cdn.dummyjson.com/product-images/14/2.jpg",
+            "https://cdn.dummyjson.com/product-images/14/3.jpg",
+            "https://cdn.dummyjson.com/product-images/14/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": "b03a"
+        }
+      ],
+      "totalAmount": 139,
+      "totalItems": 2,
+      "user": {
+        "id": "b03a",
+        "email": "test@gmail.com",
+        "password": "Test1234",
+        "addresses": [
+          {
+            "name": "shreya",
+            "email": "test@gmail.com",
+            "phone": "8955313837",
+            "street": "test",
+            "city": "Alwar",
+            "state": "Rajasthan",
+            "pinCode": "301001"
+          },
+          {
+            "name": "capibara",
+            "email": "capibara@gmail.com",
+            "phone": "9876578980",
+            "street": "block 4 gate 2",
+            "city": "jaipur",
+            "state": "Rajasthan",
+            "pinCode": "30008"
+          }
+        ]
+      },
+      "paymentMethod": "card",
+      "selectedAddress": {
+        "name": "capibara",
+        "email": "capibara@gmail.com",
+        "phone": "9876578980",
+        "street": "block 4 gate 2",
+        "city": "jaipur",
+        "state": "Rajasthan",
+        "pinCode": "30008"
+      },
+      "status": "pending"
     }
   ]
 }
