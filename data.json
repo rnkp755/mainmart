@@ -2439,15 +2439,6 @@
       "password": "Test1234",
       "addresses": [
         {
-          "name": "shreya",
-          "email": "test@gmail.com",
-          "phone": "8955313837",
-          "street": "test",
-          "city": "Alwar",
-          "state": "Rajasthan",
-          "pinCode": "301001"
-        },
-        {
           "name": "capibara",
           "email": "capibara@gmail.com",
           "phone": "9876578980",
@@ -2455,6 +2446,15 @@
           "city": "jaipur",
           "state": "Rajasthan",
           "pinCode": "30008"
+        },
+        {
+          "name": "enstamart",
+          "email": "enstamart@gmail.com",
+          "phone": "8955467890",
+          "street": "street 2 gurugram",
+          "city": "gurgao",
+          "state": "haryana",
+          "pinCode": "450042"
         }
       ]
     },
