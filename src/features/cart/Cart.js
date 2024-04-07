@@ -8,28 +8,34 @@ import { Link } from 'react-router-dom';
 const products = [
   {
     id: 1,
-    name: 'Throwback Hip Bag',
-    href: '#',
-    color: 'Salmon',
-    price: '$90.00',
+    title: "Throwback Hip Bag",
+    description: "Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.",
+    price: 90,
+    discountPercentage: 12.96,
+    rating: 4.69,
     quantity: 1,
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-    imageAlt:
-      'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
+    brand: "Gucci",
+    category: "bags",
+    thumbnail: "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg",
+    images: [
+      "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg"
+    ]
   },
   {
     id: 2,
-    name: 'Medium Stuff Satchel',
-    href: '#',
-    color: 'Blue',
-    price: '$32.00',
+    title: "Medium Stuff Satchel",
+    description: "Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.",
+    price: 32,
+    discountPercentage: 12.96,
+    rating: 4.69,
     quantity: 1,
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
-    imageAlt:
-      'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
-  },
+    brand: "Gucci",
+    category: "bags",
+    thumbnail: "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
+    images: [
+      "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg"
+    ]
+  }
   // More products...
 ];
 
@@ -51,8 +57,8 @@ export default function Cart() {
                   <li key={product.id} className="flex py-6">
                     <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                       <img
-                        src={product.imageSrc}
-                        alt={product.imageAlt}
+                        src={product.thumbnail}
+                        alt={product.id}
                         className="h-full w-full object-cover object-center"
                       />
                     </div>
@@ -61,9 +67,11 @@ export default function Cart() {
                       <div>
                         <div className="flex justify-between text-base font-medium text-gray-900">
                           <h3>
-                            <a href={product.href}>{product.name}</a>
+                            <Link to={`/product-detail/${product.id}`}>
+                              {product.title}
+                            </Link>
                           </h3>
-                          <p className="ml-4">{product.price}</p>
+                          <p className="ml-4">${product.price}</p>
                         </div>
                         <p className="mt-1 text-sm text-gray-500">
                           {product.color}
@@ -77,10 +85,11 @@ export default function Cart() {
                           >
                             Qty
                           </label>
-                          <select>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                          </select>
+                          <div className='flex items-center gap-2'>
+                            <button className='bg-gray-200 py-2 px-5 rounded-lg text-violet-800 text-3xl'>-</button>
+                            <span className='py-4 px-6 rounded-lg'>{product.quantity}</span>
+                            <button className='bg-gray-200 py-2 px-4 rounded-lg text-violet-800 text-3xl'>+</button>
+                          </div>
                         </div>
 
                         <div className="flex">
@@ -108,7 +117,7 @@ export default function Cart() {
               Shipping and taxes calculated at checkout.
             </p>
             <div className="mt-6">
-            <Link
+              <Link
                 to="/checkout"
                 className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
               >
@@ -119,14 +128,14 @@ export default function Cart() {
               <p>
                 or
                 <Link to="/">
-                <button
-                  type="button"
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
+                  <button
+                    type="button"
+                    className="font-medium text-indigo-600 hover:text-indigo-500"
 
-                >
-                  Continue Shopping
-                  <span aria-hidden="true"> &rarr;</span>
-                </button>
+                  >
+                    Continue Shopping
+                    <span aria-hidden="true"> &rarr;</span>
+                  </button>
                 </Link>
               </p>
             </div>
