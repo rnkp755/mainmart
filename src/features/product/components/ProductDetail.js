@@ -54,11 +54,11 @@ const ProductPage = () => {
   const [selectedSize, setSelectedSize] = useState(sizes[2]);
   const user = useSelector(selectLoggedInUser)
   const dispatch = useDispatch();
-  const handleCart = (e)=>{
+  const handleCart = (e) => {
     e.preventDefault();
-    const newItem  = {...product,quantity:1,user:user.id }
+    const newItem = { ...product, quantity: 1, user: user.id }
     delete newItem['id'];
-    dispatch(addToCartAsync(newItem))  
+    dispatch(addToCartAsync(newItem))
   }
 
 
@@ -208,10 +208,10 @@ const ProductPage = () => {
             <button className='bg-pink-800 text-white font-semibold py-3 px-16 rounded-xl flex items-center justify-center gap-2'>
               <span>Buy Now</span>
             </button>
-            <button 
-             onClick={handleCart}
-             type="submit"
-            className='bg-violet-800 text-white font-semibold py-3 px-16 rounded-xl flex items-center justify-center gap-2'>
+            <button
+              onClick={handleCart}
+              type="submit"
+              className='bg-violet-800 text-white font-semibold py-3 px-16 rounded-xl flex items-center justify-center gap-2'>
               <span>Add to Cart</span>
             </button>
             <div className="cursor-pointer">

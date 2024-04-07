@@ -62,7 +62,7 @@ export default function ProductList() {
   const products = useSelector(selectAllProducts);
   const user = useSelector(selectLoggedInUser);
   const dispatch = useDispatch();
-  const handleCart = (e) => {
+  const handleCart = (e, product) => {
     e.preventDefault();
     const newItem = { ...product, quantity: 1, user: user.id };
     delete newItem["id"];
@@ -272,6 +272,7 @@ export default function ProductList() {
               <div className="lg:col-span-3">
                 <ProductGrid
                   products={Array.isArray(products) ? products : []}
+                  handleCart={handleCart}
                 ></ProductGrid>
               </div>
             </div>
@@ -284,7 +285,7 @@ export default function ProductList() {
           ></Pagination>
         </main>
       </div>
-    </div>
+    </div >
   );
 }
 
@@ -527,8 +528,8 @@ function Pagination({ page, setPage, handlePage, totalItems = 100 }) {
                   : !shouldShowPrevPage &&
                     !shouldShowPage &&
                     !shouldShowTwoPagesBack
-                  ? null
-                  : ".";
+                    ? null
+                    : ".";
                 const additionalClass = content === null ? "hidden" : "";
                 return (
                   <div
@@ -541,8 +542,8 @@ function Pagination({ page, setPage, handlePage, totalItems = 100 }) {
                       : !checkWhetherPageShouldBeShown(index - 1) &&
                         !checkWhetherPageShouldBeShown(index) &&
                         !checkWhetherPageShouldBeShown(index - 2)
-                      ? null
-                      : "."}
+                        ? null
+                        : "."}
                   </div>
                 );
               }
@@ -571,8 +572,8 @@ export function ProductGrid({ products, handleCart }) {
       <div className="mx-auto max-w-2xl px-4 py-0 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
           {products.map((product) => (
-            <Link to={`/product-detail/${product.id}`} key={product.id}>
-              <div className="group relative border-solid border-2 p-2 border-gray-200">
+            <div className="group relative border-solid border-2 p-2 border-gray-200">
+              <Link to={`/product-detail/${product.id}`} key={product.id}>
                 <div className="min-h-60 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
                   <img
                     src={product.thumbnail}
@@ -618,20 +619,21 @@ export function ProductGrid({ products, handleCart }) {
                     </span>
                   </div>
                 </div>
-                <div className="grid grid-cols-4 gap-1 mt-2">
-                  <button
-                    onClick={handleCart}
-                    type="submit"
-                    className="col-span-3 bg-pink-500 text-white p-2 rounded"
-                  >
-                    <span>Add to Cart</span>
-                  </button>
-                  <div className="col-span-1 flex justify-center items-center">
-                    <CartIcon color="pink" width="6" height="6" />
-                  </div>
-                </div>{" "}
-              </div>
-            </Link>
+              </Link>
+              <div className="grid grid-cols-4 gap-1 mt-2">
+                <button
+                  onClick={(e) => handleCart(e, product)}
+                  type="submit"
+                  className="col-span-3 bg-pink-500 text-white p-2 rounded"
+                >
+                  <span>Add to Cart</span>
+                </button>
+                <div className="col-span-1 flex justify-center items-center">
+                  <CartIcon color="pink" width="6" height="6" />
+                </div>
+              </div>{" "}
+
+            </div>
           ))}
         </div>
       </div>
