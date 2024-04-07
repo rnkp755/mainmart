@@ -19,7 +19,7 @@ import {
 import CartIcon from "./icons";
 import { Link } from "react-router-dom";
 
-import { Rating } from '@mui/material';
+import { Rating } from "@mui/material";
 import {
   ChevronDownIcon,
   FunnelIcon,
@@ -28,6 +28,9 @@ import {
   Squares2X2Icon,
 } from "@heroicons/react/20/solid";
 import { ITEMS_PER_PAGE } from "../../../app/constants.js";
+import { selectItems } from "../../cart/cartSlice";
+import { addToCartAsync } from "../../cart/cartSlice";
+import { selectLoggedInUser } from "../../auth/authSlice";
 
 const sortOptions = [
   { name: "Best Rating", sort: "rating", order: "desc", current: false },
@@ -35,18 +38,37 @@ const sortOptions = [
   { name: "Price: High to Low", sort: "price", order: "desc", current: false },
 ];
 
-
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function ProductList() {
-  const dispatch = useDispatch();
+  const [product, setProduct] = useState({
+    title: "Loading...",
+    description: "Loading...",
+    price: 0,
+    discountPercentage: 0,
+    rating: 0,
+    reviews: [{}],
+    stock: 0,
+    brand: "Loading...",
+    category: "Loading...",
+    images: [],
+  });
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const brands = useSelector(selectBrands);
   const categories = useSelector(selectCategories);
+  const items = useSelector(selectItems);
   const products = useSelector(selectAllProducts);
+  const user = useSelector(selectLoggedInUser);
+  const dispatch = useDispatch();
+  const handleCart = (e) => {
+    e.preventDefault();
+    const newItem = { ...product, quantity: 1, user: user.id };
+    delete newItem["id"];
+    dispatch(addToCartAsync(newItem));
+  };
+
   const filters = [
     {
       id: "category",
@@ -129,9 +151,9 @@ export default function ProductList() {
   };
 
   useEffect(() => {
-    dispatch(fetchBrandsAsync())
-    dispatch(fetchCategoriesAsync())
-  }, [])
+    dispatch(fetchBrandsAsync());
+    dispatch(fetchCategoriesAsync());
+  }, []);
 
   useEffect(() => {
     const pagination = { _page: page, _per_page: ITEMS_PER_PAGE || 9 }; // Fixing default value assignment
@@ -242,7 +264,8 @@ export default function ProductList() {
             </h2>
 
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
-              <DesktopFilter handleFilter={handleFilter}
+              <DesktopFilter
+                handleFilter={handleFilter}
                 filters={filters}
               ></DesktopFilter>
 
@@ -504,10 +527,9 @@ function Pagination({ page, setPage, handlePage, totalItems = 100 }) {
                   : !shouldShowPrevPage &&
                     !shouldShowPage &&
                     !shouldShowTwoPagesBack
-                    ? null
-                    : ".";
-                const additionalClass =
-                  content === null ? "hidden" : "";
+                  ? null
+                  : ".";
+                const additionalClass = content === null ? "hidden" : "";
                 return (
                   <div
                     onClick={() => handlePage(index + 1)} // Fixing onclick attribute
@@ -519,8 +541,8 @@ function Pagination({ page, setPage, handlePage, totalItems = 100 }) {
                       : !checkWhetherPageShouldBeShown(index - 1) &&
                         !checkWhetherPageShouldBeShown(index) &&
                         !checkWhetherPageShouldBeShown(index - 2)
-                        ? null
-                        : "."}
+                      ? null
+                      : "."}
                   </div>
                 );
               }
@@ -543,7 +565,7 @@ function Pagination({ page, setPage, handlePage, totalItems = 100 }) {
     </div>
   );
 }
-export function ProductGrid({ products }) {
+export function ProductGrid({ products, handleCart }) {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-0 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
@@ -597,8 +619,12 @@ export function ProductGrid({ products }) {
                   </div>
                 </div>
                 <div className="grid grid-cols-4 gap-1 mt-2">
-                  <button className="col-span-3 bg-pink-500 text-white p-2 rounded">
-                    Add to Cart
+                  <button
+                    onClick={handleCart}
+                    type="submit"
+                    className="col-span-3 bg-pink-500 text-white p-2 rounded"
+                  >
+                    <span>Add to Cart</span>
                   </button>
                   <div className="col-span-1 flex justify-center items-center">
                     <CartIcon color="pink" width="6" height="6" />
@@ -609,6 +635,6 @@ export function ProductGrid({ products }) {
           ))}
         </div>
       </div>
-    </div >
+    </div>
   );
 }
