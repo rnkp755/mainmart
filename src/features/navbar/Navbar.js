@@ -16,10 +16,233 @@ const user = {
   imageUrl:
     'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 };
-const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-];
+const navigation = {
+  categories: [
+    {
+      id: 'kitchen',
+      name: 'Kitchen',
+      featured: [
+        {
+          name: 'New Arrivals',
+          href: '#',
+          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg',
+          imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.',
+        },
+        {
+          name: 'Basic Tees',
+          href: '#',
+          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg',
+          imageAlt: 'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
+        },
+      ],
+      sections: [
+        {
+          id: 'appliances',
+          name: 'Appliances',
+          items: [
+            { name: 'Toaster', href: '#' },
+            { name: 'Sanswich Maker', href: '#' },
+            { name: 'Rice Cooker', href: '#' },
+            { name: 'Electric Kettle', href: '#' },
+            { name: 'Juice Maker', href: '#' },
+            { name: 'Induction', href: '#' },
+            { name: 'Mixer Grinder', href: '#' },
+            { name: 'Food Processor', href: '#' },
+            { name: 'Blender', href: '#' },
+            { name: 'Hand Mixer', href: '#' },
+            { name: 'OTG', href: '#' },
+            { name: 'Air Fry', href: '#' },
+            { name: 'Microwave', href: '#' },
+          ],
+        },
+        {
+          id: 'builtin',
+          name: 'BuiltIn',
+          items: [
+            { name: 'Built in Microwaves /BBQ', href: '#' },
+            { name: 'Built in Oven', href: '#' },
+            { name: 'Chimney', href: '#' },
+            { name: 'Hobbs', href: '#' },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'home',
+      name: 'Home',
+      featured: [
+        {
+          name: 'New Arrivals',
+          href: '#',
+          imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
+          imageAlt: 'Drawstring top with elastic loop closure and textured interior padding.',
+        },
+        {
+          name: 'Artwork Tees',
+          href: '#',
+          imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg',
+          imageAlt:
+            'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
+        },
+      ],
+      sections: [
+        {
+          id: 'appliances',
+          name: 'Appliances',
+          items: [
+            { name: 'Ceramic/Oil Fan', href: '#' },
+            { name: 'Air Purifier', href: '#' },
+            { name: 'Heater', href: '#' },
+          ],
+        },
+        {
+          id: 'cleaning aid',
+          name: 'Cleaning Aid',
+          items: [
+            { name: 'Vaccum Cleaner', href: '#' },
+            { name: 'Dish Washer', href: '#' },
+            { name: 'Cloth Dryer', href: '#' },
+          ],
+        },
+        {
+          id: 'garment',
+          name: 'Garmet',
+          items: [
+            { name: 'Garment Streamer', href: '#' },
+            { name: 'Stream and Dry Iron', href: '#' },
+          ],
+        },
+        {
+          id: 'other',
+          name: 'Other',
+          items: [
+            { name: 'Trimmer', href: '#' },
+            { name: 'Hair Dryer', href: '#' },
+            { name: 'Shaver', href: '#' },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'personal care',
+      name: 'Personal Care',
+      featured: [
+        {
+          name: 'New Arrivals',
+          href: '#',
+          imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
+          imageAlt: 'Drawstring top with elastic loop closure and textured interior padding.',
+        },
+        {
+          name: 'Artwork Tees',
+          href: '#',
+          imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg',
+          imageAlt:
+            'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
+        },
+      ],
+      sections: [
+        {
+          id: 'fragrance',
+          name: 'Fragrance',
+          items: [
+            { name: 'Eau de Toilette', href: '#' },
+            { name: 'Eau de Parfum', href: '#' },
+            { name: 'Eau de Cologne', href: '#' },
+            { name: 'Parfum', href: '#' },
+            { name: 'Eau Fraiche', href: '#' },
+
+          ],
+        },
+        {
+          id: 'body care',
+          name: 'Body Care',
+          items: [
+            { name: 'Body Gel', href: '#' },
+            { name: 'Body Lotion', href: '#' },
+            { name: 'Bath and Shower', href: '#' },
+          ],
+        },
+        {
+          id: 'skin care',
+          name: 'Skin Care',
+          items: [
+            { name: 'Moisturizer', href: '#' },
+            { name: 'Cleanser', href: '#' },
+            { name: 'Mask Toner', href: '#' },
+            { name: 'Sun Screen', href: '#' },
+            { name: 'Lips', href: '#' },
+          ],
+        },
+        {
+          id: 'makeup',
+          name: 'MakeUp',
+          items: [
+            { name: 'Face', href: '#' },
+            { name: 'Eyes', href: '#' },
+            { name: 'Lips', href: '#' },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'watches',
+      name: 'Watches',
+      featured: [
+        {
+          name: 'New Arrivals',
+          href: '#',
+          imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
+          imageAlt: 'Drawstring top with elastic loop closure and textured interior padding.',
+        },
+        {
+          name: 'Artwork Tees',
+          href: '#',
+          imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg',
+          imageAlt:
+            'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
+        },
+      ],
+      sections: [
+        {
+          id: 'watches by movment',
+          name: 'Watches by Movment',
+          items: [
+            { name: 'Quartz Watch', href: '#' },
+            { name: 'Solar Watch', href: '#' },
+            { name: 'Automatic Watch', href: '#' },
+            { name: 'Smart Watch', href: '#' },
+          ],
+        },
+        {
+          id: 'watches by functionality',
+          name: 'Watches by Functionality',
+          items: [
+            { name: 'Analouge Watch', href: '#' },
+            { name: 'Digital Watch', href: '#' },
+            { name: 'Chronograph Watch', href: '#' },
+          ],
+        },
+        {
+          id: 'watches by style',
+          name: 'Watches by Style',
+          items: [
+            { name: 'Aviator Watch', href: '#' },
+            { name: 'Military Watch', href: '#' },
+            { name: 'Diving Watch', href: '#' },
+            { name: 'Luxary Watch', href: '#' },
+            { name: 'Dress Watch', href: '#' },
+          ],
+        },
+      ],
+    },
+  ],
+  pages: [
+    { name: '', href: '#' },
+    { name: '', href: '#' },
+  ],
+}
+
 const userNavigation = [
   { name: 'Your Profile', link: '/' },
   { name: 'Settings', link: '/' },
@@ -35,7 +258,7 @@ function NavBar({ children }) {
   return (
     <>
       <div className="min-h-full">
-        <Disclosure as="nav" className="bg-gray-800">
+        <Disclosure as="nav" className="bg-white">
           {({ open }) => (
             <>
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -49,15 +272,15 @@ function NavBar({ children }) {
                       />
                     </div>
                     <div className="hidden md:block">
-                      <div className="ml-10 flex items-baseline space-x-4">
-                        {navigation.map((item) => (
+                      <div className="cursor-pointer ml-10 flex items-baseline space-x-4">
+                        {navigation.categories.map((item) => (
                           <a
                             key={item.name}
                             href={item.href}
                             className={classNames(
                               item.current
                                 ? 'bg-gray-900 text-white'
-                                : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                : 'text-gray-900 hover:bg-gray-200 hover:text-gray-700',
                               'rounded-md px-3 py-2 text-sm font-medium'
                             )}
                             aria-current={item.current ? 'page' : undefined}
@@ -150,7 +373,7 @@ function NavBar({ children }) {
 
               <Disclosure.Panel className="md:hidden">
                 <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-                  {navigation.map((item) => (
+                  {navigation.categories.map((item) => (
                     <Disclosure.Button
                       key={item.name}
                       as="a"
