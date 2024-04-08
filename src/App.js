@@ -31,6 +31,7 @@ import ProtectedAdmin from './features/auth/components/ProtectedAdmin';
 import AdminHome from './pages/AdminHome';
 import AdminProductDetailPage from './pages/AdminProductDetailPage';
 import AdminProductFormPage from './pages/AdminProductFormPage';
+import AdminGenerateCouponPage from './pages/AdminGenerateCouponPage.js';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -81,6 +82,14 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: '/admin/generate-discount-coupon',
+    element: (
+      <ProtectedAdmin>
+        <AdminGenerateCouponPage></AdminGenerateCouponPage>
+      </ProtectedAdmin>
+    ),
+  },
+  {
     path: '/admin/product-form/edit/:id',
     element: (
       <ProtectedAdmin>
@@ -95,18 +104,18 @@ const router = createBrowserRouter([
   {
     path: '/orders',
     element: <UserOrdersPage></UserOrdersPage>,
-    },
-    {
-      path: '/profile',
-      element: <UserProfilePage></UserProfilePage>,
-    },
-    {
-      path: '/logout',
-      element: <Logout></Logout>,
-    },
-    {
-      path: '/forgot-password',
-      element: <ForgotPasswordPage></ForgotPasswordPage>,
+  },
+  {
+    path: '/profile',
+    element: <UserProfilePage></UserProfilePage>,
+  },
+  {
+    path: '/logout',
+    element: <Logout></Logout>,
+  },
+  {
+    path: '/forgot-password',
+    element: <ForgotPasswordPage></ForgotPasswordPage>,
   },
   {
     path: '*',
@@ -127,11 +136,11 @@ function App() {
   }, [dispatch, user]);
   return (
     <>
-    <div className="App">
-      <RouterProvider router={router} />
-      {/* Link must be inside the Provider */}
-    </div>
-  </>
+      <div className="App">
+        <RouterProvider router={router} />
+        {/* Link must be inside the Provider */}
+      </div>
+    </>
   );
 }
 
