@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -36,6 +36,22 @@ import image12 from '../../assets/categories/watch4.jpg';
 import image13 from '../../assets/categories/watch4.jpg';
 import { Watch } from '@mui/icons-material';
 
+
+function useWindowSize() {
+  const [size, setSize] = useState({ width: window.innerWidth, height: window.innerHeight });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setSize({ width: window.innerWidth, height: window.innerHeight });
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return size;
+}
+
 function ImageCarousel() {
   const [expandedItemId, setExpandedItemId] = useState(null);
 
@@ -45,11 +61,23 @@ function ImageCarousel() {
     );
   };
 
+  const size = useWindowSize();
+  const [slidesNo, setSlidesNo] = useState(size.width < 768 ? 3 : 6); // Default based on initial size
+
+  // Adjust slidesNo based on screen size changes
+  useEffect(() => {
+    if (size.width < 768) { // Assuming 'small' is below 768px
+      setSlidesNo(3);
+    } else { // 'medium' and above
+      setSlidesNo(7);
+    }
+  }, [size.width]); // Dependency on size.width ensures this runs only when width changes
+
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 8,
+    slidesToShow: slidesNo,
     slidesToScroll: 1,
     spaceBetween: 24,
     autoplay: true,
@@ -199,11 +227,11 @@ function ImageCarousel() {
   const images = [image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12, image13];
 
   return (
-    <div className="flex justify-start items-center bg-gray-100 overflow-x-hidden ">
+    <div className="flex justify-start items-center bg-gray-100">
       <Slider {...settings} className="w-full px-4">
         {items.map((item, index) => (
-          <div key={item.id} className="p-4">
-            <div className="rounded-full bg-gray-200 h-32 w-32 overflow-hidden relative">
+          <div key={item.id} className="min-w-[33.333%] md:min-w-[25%] lg:min-w-[20%] p-4 flex-shrink-0">
+            <div className="rounded-full bg-gray-200 h-32 w-32 overflow-hidden relative mx-auto">
               <img
                 src={images[index]} // Use the image from the array
                 alt={`Item ${item.id}`}
@@ -226,7 +254,7 @@ function ImageCarousel() {
             {expandedItemId === item.id && (
               <div>
                 {item.itemsToShow.map((subitem, index) => (
-                  <div key={index} className="flex items-center">
+                  <div key={index} className="flex items-center justify-center">
                     {/* {item.icon} Material-UI icon */}
                     <button className="expanded-item bg-white text-gray-800 hover:text-red-500 py-2 px-4 rounded cursor-pointer">
                       {subitem.icon}
