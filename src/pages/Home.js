@@ -5,6 +5,8 @@ import ImageCarousel from "../features/carousel/Categories.js";
 import Slider from "../features/slider/Slider.js"
 import Tabs from "../features/Tabs/Tabs.js"
 
+import { Link } from "react-router-dom";
+
 function Home() {
     let homePageSlides = [
         "https://i.pinimg.com/originals/51/82/ac/5182ac536727d576c78a9320ac62de30.jpg",
@@ -23,6 +25,7 @@ function Home() {
                 <ImageCarousel />
                 <ProductList></ProductList>
             </NavBar>
+            
         </div>
     );
 }

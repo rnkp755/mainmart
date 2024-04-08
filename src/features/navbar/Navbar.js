@@ -8,7 +8,7 @@ import {
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectItems } from '../cart/cartSlice';
-;
+
 
 const user = {
   name: 'Tom Cook',
@@ -244,9 +244,9 @@ const navigation = {
 }
 
 const userNavigation = [
-  { name: 'Your Profile', link: '/' },
-  { name: 'Settings', link: '/' },
-  { name: 'Sign out', link: '/login' },
+  { name: 'My Profile', link: '/profile' },
+  { name: 'My Orders', link: '/orders' },
+  { name: 'Sign out', link: '/logout' },
 ];
 
 function classNames(...classes) {
