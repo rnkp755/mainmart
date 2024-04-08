@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, Fragment } from 'react';
+import { Dialog, Transition } from '@headlessui/react'
+import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 import { useParams } from 'react-router-dom';
 import { Rating } from '@mui/material';
 import CartIcon from './icons';
@@ -7,6 +9,7 @@ import { addToCartAsync } from '../../cart/cartSlice';
 import { selectLoggedInUser } from '../../auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductByIdAsync, selectProductById } from '../productSlice';
+
 const colors = [
   { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
   { name: 'Gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400' },
@@ -79,7 +82,8 @@ const ProductPage = () => {
           const url = `http://localhost:8080/products?category=${productData.category}&_sort=-rating,discountPercentage,price`
           const recommendedResponse = await fetch(url);
           const recommendedData = await recommendedResponse.json();
-          setRecommendedProducts(recommendedData);
+          const truncatedRecommendedData = recommendedData.slice(0, 9);
+          setRecommendedProducts(truncatedRecommendedData);
         }
 
         // Add temporary reviews
@@ -141,6 +145,10 @@ const ProductPage = () => {
   const reviewScrollRef = useRef(null);
   const recommendationScrollRef = useRef(null);
 
+  const [open, setOpen] = useState(true)
+
+  const cancelButtonRef = useRef(null)
+
   const scrollToAbout = () => {
     if (aboutScrollRef.current) {
       aboutScrollRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -193,30 +201,109 @@ const ProductPage = () => {
               <div className='text-2xl'>{product.price.toFixed(2)}</div>
             )}
           </div>
-          <div className='flex items-center gap-2'>
-            <button className='bg-gray-200 py-2 px-5 rounded-lg text-violet-800 text-3xl' onClick={() => setQty((prev) => prev > 1 ? prev - 1 : prev)}>-</button>
-            <span className='py-4 px-6 rounded-lg'>{qty}</span>
-            <button className='bg-gray-200 py-2 px-4 rounded-lg text-violet-800 text-3xl' onClick={() => setQty((prev) => prev + 1)}>+</button>
+          <div className="flex flex-row justify-normal">
+            <div className='flex items-center gap-2'>
+              <button className='bg-gray-200 py-2 px-5 rounded-lg text-violet-800 text-3xl' onClick={() => setQty((prev) => prev > 1 ? prev - 1 : prev)}>-</button>
+              <span className='py-4 px-6 rounded-lg'>{qty}</span>
+              <button className='bg-gray-200 py-2 px-4 rounded-lg text-violet-800 text-3xl' onClick={() => setQty((prev) => prev + 1)}>+</button>
+            </div>
+            <button
+              onClick={handleCart}
+              type="submit"
+              className='bg-violet-800 text-white font-semibold py-3 px-16 rounded-xl flex items-center justify-center gap-2 ml-6'>
+              <span>Add to Cart</span>
+            </button>
           </div>
           <div className='flex justify-between'>
-            <button className=' bg-orange-500 py-3 px-7 rounded-full text-white font-semibold flex items-center justify-center gap-2' onClick={scrollToAbout}>ABOUT</button>
-            <button className='bg-violet-500 py-3 px-7 rounded-full text-white font-semibold flex items-center justify-center gap-2' onClick={scrollToRecommendation}>RECOMMENDATION</button>
-            <button className='bg-orange-500 py-3 px-7 rounded-full text-white font-semibold flex items-center justify-center gap-2' onClick={scrollToReview}>REVIEWS</button>
-            <button className='bg-violet-500 py-3 px-7 rounded-full text-white font-semibold flex items-center justify-center gap-2'>SIMILAR</button>
+            <button className=' bg-orange-500 py-3 px-10 rounded-full text-white font-semibold flex items-center justify-center gap-2' onClick={scrollToAbout}>ABOUT</button>
+            <button className='bg-orange-500 py-3 px-10 rounded-full text-white font-semibold flex items-center justify-center gap-2' onClick={scrollToReview}>REVIEWS</button>
+            <button className='bg-violet-500 py-3 px-10 rounded-full text-white font-semibold flex items-center justify-center gap-2'>SIMILAR</button>
           </div>
           <div className='flex flex-row justify-evenly'>
             <button className='bg-pink-800 text-white font-semibold py-3 px-16 rounded-xl flex items-center justify-center gap-2'>
               <span>Buy Now</span>
             </button>
-            <button
-              onClick={handleCart}
-              type="submit"
-              className='bg-violet-800 text-white font-semibold py-3 px-16 rounded-xl flex items-center justify-center gap-2'>
-              <span>Add to Cart</span>
-            </button>
-            <div className="cursor-pointer">
-              <CartIcon color="pink" width="10" height="10" />
-            </div>
+            {
+              product.category === 'skincare' || product.category === 'fragrances' && (
+                <>
+
+                  <button
+                    className='bg-violet-500 py-3 px-7 rounded-full text-white font-semibold flex items-center justify-center gap-2'
+                    onClick={() => setOpen(true)}
+                    ref={cancelButtonRef}
+                  >Combo</button>
+
+                  <Transition.Root show={open} as={Fragment}>
+                    <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={setOpen}>
+                      <Transition.Child
+                        as={Fragment}
+                        enter="ease-out duration-300"
+                        enterFrom="opacity-0"
+                        enterTo="opacity-100"
+                        leave="ease-in duration-200"
+                        leaveFrom="opacity-100"
+                        leaveTo="opacity-0"
+                      >
+                        <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+                      </Transition.Child>
+
+                      <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                        <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                          <Transition.Child
+                            as={Fragment}
+                            enter="ease-out duration-300"
+                            enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                            enterTo="opacity-100 translate-y-0 sm:scale-100"
+                            leave="ease-in duration-200"
+                            leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                            leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                          >
+                            <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                              <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                                <div className="sm:flex sm:items-start">
+                                  <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                                    <ExclamationTriangleIcon className="h-6 w-6 text-red-600" aria-hidden="true" />
+                                  </div>
+                                  <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                                    <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
+                                      Deactivate account
+                                    </Dialog.Title>
+                                    <div className="mt-2">
+                                      <p className="text-sm text-gray-500">
+                                        Are you sure you want to deactivate your account? All of your data will be permanently
+                                        removed. This action cannot be undone.
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                                <button
+                                  type="button"
+                                  className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                                  onClick={() => setOpen(false)}
+                                >
+                                  Deactivate
+                                </button>
+                                <button
+                                  type="button"
+                                  className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                                  onClick={() => setOpen(false)}
+                                  ref={cancelButtonRef}
+                                >
+                                  Cancel
+                                </button>
+                              </div>
+                            </Dialog.Panel>
+                          </Transition.Child>
+                        </div>
+                      </div>
+                    </Dialog>
+                  </Transition.Root>
+                </>
+
+              )
+            }
           </div>
         </div>
       </div>
@@ -235,7 +322,7 @@ const ProductPage = () => {
             <div className="flex flex-row">
               <div className="rating flex-1 mx-14">
                 <div className="flex items-center mb-2">
-                  <Rating name="read-only" value={product.rating} readOnly precision={0.5} />
+                  <Rating name="read-only" value={product.rating} readOnly precision={0.1} />
                   <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">{product.rating}</p>
                   <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">out of</p>
                   <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">5</p>
