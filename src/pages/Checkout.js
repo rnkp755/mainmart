@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import {
   updateUserAsync,
 } from "../features/auth/authSlice";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createOrderAsync, selectCurrentOrder } from "../features/order/orderSlice";
 import { selectUserInfo } from '../features/user/userSlice';
 
@@ -32,6 +32,23 @@ function Checkout() {
   const totalItems = items.reduce((total, item) => item.quantity + total, 0);
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState("null");
+  const [totalCartValue, setTotalCartValue] = useState(0);
+  const [discount, setDiscount] = useState(0);
+  useEffect(() => {
+    const totalValue = items.reduce((total, item) => {
+      const discountedPrice = item.price - (item.price * item.discountPercentage / 100);
+      return total + (discountedPrice * item.quantity);
+    }, 0);
+
+    const totalDiscount = items.reduce((total, item) => {
+      return total + (item.discountPercentage * item.price * item.quantity / 100);
+    }, 0);
+
+    setTotalCartValue(totalValue.toFixed(2));
+    setDiscount(totalDiscount.toFixed(2));
+  }, [items]);
+
+
   const handleQuantity = (e, item) => {
     dispatch(updateCartAsync({ ...item, quantity: +e.target.value }));
   };
@@ -157,7 +174,7 @@ function Checkout() {
                           type="tel"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
-                         {errors.phone && (
+                        {errors.phone && (
                           <p className="text-red-500">{errors.phone.message}</p>
                         )}
                       </div>
@@ -179,7 +196,7 @@ function Checkout() {
                           id="street"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
-                         {errors.street && (
+                        {errors.street && (
                           <p className="text-red-500">
                             {errors.street.message}
                           </p>
@@ -203,7 +220,7 @@ function Checkout() {
                           autoComplete="address-level2"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
-                          {errors.city && (
+                        {errors.city && (
                           <p className="text-red-500">{errors.city.message}</p>
                         )}
                       </div>
@@ -271,7 +288,7 @@ function Checkout() {
                     Add Address
                   </button>
                 </div>
-                </div>
+              </div>
             </form>
             <div className="border-b border-gray-900/10 pb-12">
               <h2 className="text-base font-semibold leading-7 text-gray-900">
@@ -342,7 +359,7 @@ function Checkout() {
                         className="block text-sm font-medium leading-6 text-gray-900"
 
                       >
-                      Cash
+                        Cash
                       </label>
                     </div>
                     <div className="flex items-center gap-x-3">
@@ -363,7 +380,7 @@ function Checkout() {
                       </label>
                     </div>
                   </div>
-                  </fieldset>
+                </fieldset>
               </div>
             </div>
           </div>
@@ -390,7 +407,17 @@ function Checkout() {
                               <h3>
                                 <a href={item.href}>{item.title}</a>
                               </h3>
-                              <p className="ml-4">${item.price}</p>
+                              <p>
+                                {item.discountPercentage > 0 ? (
+                                  <>
+                                    <div className='text-2xl font-bold text-black-600'>${(item.price - (item.price) * item.discountPercentage / 100).toFixed(2)}</div>
+                                    <div className='text-gray-400 line-through'>${item.price.toFixed(2)}</div>
+                                    <div className='text-green-500'>Save ${(item.price * item.discountPercentage / 100).toFixed(2)}</div>
+                                  </>
+                                ) : (
+                                  <div className='text-2xl'>{item.price.toFixed(2)}</div>
+                                )}
+                              </p>
                             </div>
                             <p className="mt-1 text-sm text-gray-500">
                               {item.brand}
@@ -435,7 +462,10 @@ function Checkout() {
               <div className="border-t border-gray-200 px-2 py-6 sm:px-2">
                 <div className="flex justify-between my-2 text-base font-medium text-gray-900">
                   <p>Subtotal</p>
-                  <p>$ {totalAmount}</p>
+                  <div className="flex flex-col">
+                    <p>$ {totalCartValue}</p>
+                    <p className='text-green-500'>Save ${discount}</p>
+                  </div>
                 </div>
                 <div className="flex justify-between my-2 text-base font-medium text-gray-900">
                   <p>Total Items in Cart</p>
