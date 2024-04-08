@@ -27,10 +27,22 @@ import UserOrders from './features/user/components/UserOrders';
 import UserOrdersPage from './pages/UserOrdersPage';
 import Logout from './features/auth/components/Logout';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
+import ProtectedAdmin from './features/auth/components/ProtectedAdmin';
+import AdminHome from './pages/AdminHome';
+import AdminProductDetailPage from './pages/AdminProductDetailPage';
+import AdminProductFormPage from './pages/AdminProductFormPage';
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Protected><Home></Home></Protected>,
+  },
+  {
+    path: '/admin',
+    element: (
+      <ProtectedAdmin>
+        <AdminHome></AdminHome>
+      </ProtectedAdmin>
+    ),
   },
   {
     path: '/login',
@@ -51,6 +63,30 @@ const router = createBrowserRouter([
   {
     path: '/product-detail/:id',
     element: <Protected><ProductDetailPage></ProductDetailPage></Protected>,
+  },
+  {
+    path: '/admin/product-detail/:id',
+    element: (
+      <ProtectedAdmin>
+        <AdminProductDetailPage></AdminProductDetailPage>
+      </ProtectedAdmin>
+    ),
+  },
+  {
+    path: '/admin/product-form',
+    element: (
+      <ProtectedAdmin>
+        <AdminProductFormPage></AdminProductFormPage>
+      </ProtectedAdmin>
+    ),
+  },
+  {
+    path: '/admin/product-form/edit/:id',
+    element: (
+      <ProtectedAdmin>
+        <AdminProductFormPage></AdminProductFormPage>
+      </ProtectedAdmin>
+    ),
   },
   {
     path: '/order-success/:id',
@@ -90,9 +126,12 @@ function App() {
     }
   }, [dispatch, user]);
   return (
+    <>
     <div className="App">
       <RouterProvider router={router} />
+      {/* Link must be inside the Provider */}
     </div>
+  </>
   );
 }
 

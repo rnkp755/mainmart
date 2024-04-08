@@ -6,7 +6,7 @@ import CarouselControlsInside from './Carousel';
 import { addToCartAsync } from '../../cart/cartSlice';
 import { selectLoggedInUser } from '../../auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllProductByIdAsync, selectProductById } from '../productSlice';
+import { fetchProductByIdAsync, selectProductById } from '../productSlice';
 const colors = [
   { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
   { name: 'Gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400' },

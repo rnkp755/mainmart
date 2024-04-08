@@ -2437,6 +2437,7 @@
       "id": "b03a",
       "email": "test@gmail.com",
       "password": "Test1234",
+      "role": "user",
       "addresses": [
         {
           "name": "capibara",
@@ -2462,50 +2463,42 @@
       "id": "2864",
       "email": "a@gmail.com",
       "password": "Abcd1234",
+      "role": "user",
       "addresses": []
     },
     {
       "id": "233b",
       "email": "capibara@gmail.com",
       "password": "Capibara1234",
+      "role": "user",
       "addresses": []
+    },
+    {
+      "id": "9c56",
+      "email": "admin@gmail.com",
+      "password": "Admin1234",
+      "addresses": [],
+      "role": "admin"
     }
   ],
   "cart": [
     {
-      "id": "83f4",
-      "title": "Hyaluronic Acid Serum",
-      "description": "L'OrÃ©al Paris introduces Hyaluron Expert Replumping Serum formulated with 1.5% Hyaluronic Acid",
-      "price": 19,
-      "discountPercentage": 13.31,
-      "rating": 4.83,
-      "stock": 110,
-      "brand": "L'Oreal Paris",
-      "category": "skincare",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/16/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/16/1.png",
-        "https://cdn.dummyjson.com/product-images/16/2.webp",
-        "https://cdn.dummyjson.com/product-images/16/3.jpg",
-        "https://cdn.dummyjson.com/product-images/16/4.jpg",
-        "https://cdn.dummyjson.com/product-images/16/thumbnail.jpg"
-      ],
-      "quantity": 1,
-      "user": "b03a"
-    },
-    {
-      "id": "ca2a",
-      "title": "Samsung Universe 9",
-      "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
-      "price": 1249,
-      "discountPercentage": 15.46,
-      "rating": 4.09,
-      "stock": 36,
-      "brand": "Samsung",
+      "id": "7db3",
+      "title": "OPPOF19",
+      "description": "OPPO F19 is officially announced on April 2021.",
+      "price": 280,
+      "discountPercentage": 17.91,
+      "rating": 4.3,
+      "stock": 123,
+      "brand": "OPPO",
       "category": "smartphones",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/3/thumbnail.jpg",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/4/thumbnail.jpg",
       "images": [
-        "https://cdn.dummyjson.com/product-images/3/1.jpg"
+        "https://cdn.dummyjson.com/product-images/4/1.jpg",
+        "https://cdn.dummyjson.com/product-images/4/2.jpg",
+        "https://cdn.dummyjson.com/product-images/4/3.jpg",
+        "https://cdn.dummyjson.com/product-images/4/4.jpg",
+        "https://cdn.dummyjson.com/product-images/4/thumbnail.jpg"
       ],
       "reviews": [
         {
@@ -2785,6 +2778,102 @@
         "city": "jaipur",
         "state": "Rajasthan",
         "pinCode": "30008"
+      },
+      "status": "pending"
+    },
+    {
+      "id": "ad8b",
+      "items": [
+        {
+          "id": "7db3",
+          "title": "OPPOF19",
+          "description": "OPPO F19 is officially announced on April 2021.",
+          "price": 280,
+          "discountPercentage": 17.91,
+          "rating": 4.3,
+          "stock": 123,
+          "brand": "OPPO",
+          "category": "smartphones",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/4/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/4/1.jpg",
+            "https://cdn.dummyjson.com/product-images/4/2.jpg",
+            "https://cdn.dummyjson.com/product-images/4/3.jpg",
+            "https://cdn.dummyjson.com/product-images/4/4.jpg",
+            "https://cdn.dummyjson.com/product-images/4/thumbnail.jpg"
+          ],
+          "reviews": [
+            {
+              "id": 1,
+              "avatar": "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+              "user": "John Doe",
+              "joinedOn": "August 2014",
+              "rating": 4.5,
+              "reviewTitle": "Thinking to buy another one!",
+              "reviewDate": "March 3, 2017",
+              "reviewMsg": "This is my third Invicta Pro Diver. They are just fantastic value for money. This one arrived yesterday and the first thing I did was set the time, popped on an identical strap from another Invicta and went in the shower with it to test the waterproofing.... No problems. It is obviously not the same build quality as those very expensive watches. But that is like comparing a Citroën to a Ferrari. This watch was well under £100! An absolute bargain."
+            },
+            {
+              "id": 2,
+              "avatar": "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+              "user": "Alice Doe",
+              "joinedOn": "August 2014",
+              "rating": 3,
+              "reviewTitle": "Thinking to buy another one!",
+              "reviewDate": "March 3, 2017",
+              "reviewMsg": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur earum, porro, totam, doloribus maxime maiores culpa facere aliquid accusamus iste nobis natus magni? Labore, iste. Voluptatem, earum magnam! Qui, dolor?"
+            },
+            {
+              "id": 3,
+              "avatar": "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+              "user": "Bob Doe",
+              "joinedOn": "August 2014",
+              "rating": 4.7,
+              "reviewTitle": "Thinking to buy another one!",
+              "reviewDate": "March 3, 2017",
+              "reviewMsg": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae mollitia quaerat aperiam aliquid aut tenetur temporibus? Dicta, autem commodi. Quia totam ut, inventore explicabo omnis harum aut id laudantium cupiditate!"
+            }
+          ],
+          "quantity": 1,
+          "user": "b03a"
+        }
+      ],
+      "totalAmount": 280,
+      "totalItems": 1,
+      "user": {
+        "id": "b03a",
+        "email": "test@gmail.com",
+        "password": "Test1234",
+        "addresses": [
+          {
+            "name": "capibara",
+            "email": "capibara@gmail.com",
+            "phone": "9876578980",
+            "street": "block 4 gate 2",
+            "city": "jaipur",
+            "state": "Rajasthan",
+            "pinCode": "30008"
+          },
+          {
+            "name": "enstamart",
+            "email": "enstamart@gmail.com",
+            "phone": "8955467890",
+            "street": "street 2 gurugram",
+            "city": "gurgao",
+            "state": "haryana",
+            "pinCode": "450042"
+          }
+        ]
+      },
+      "paymentMethod": "card",
+      "selectedAddress": {
+        "name": "enstamart",
+        "email": "enstamart@gmail.com",
+        "phone": "8955467890",
+        "street": "street 2 gurugram",
+        "city": "gurgao",
+        "state": "haryana",
+        "pinCode": "450042"
       },
       "status": "pending"
     }
