@@ -8,6 +8,7 @@ import {
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectItems } from '../cart/cartSlice';
+import { selectLoggedInUser } from '../auth/authSlice';
 
 
 const user = {
@@ -256,6 +257,9 @@ function classNames(...classes) {
 function NavBar({ children }) {
   const items = useSelector(selectItems);
   const [open, setOpen] = useState(false)
+
+  const loggedInuser = useSelector(selectLoggedInUser);
+
   return (
     <>
       <div className="min-h-full">
@@ -387,6 +391,17 @@ function NavBar({ children }) {
                     ))}
                   </div>
                   <div className="ml-4 flex items-center md:ml-6">
+                    {
+                      loggedInuser.role === "admin" && (
+
+                        <Link to="/admin">
+                          <button
+                            type="button"
+                            className="mx-2 bg-violet-500 py-3 px-7 rounded-full text-white font-semibold flex items-center justify-center"
+                          > Admin Panel</button>
+                        </Link>
+                      )
+                    }
                     <Link to="/cart">
                       <button
                         type="button"
