@@ -6,11 +6,11 @@ const GenerateDiscountCoupon = () => {
             const coupon = e.target.coupon.value;
             const discountPercentage = e.target['discount-percentage'].value;
             console.log(coupon, discountPercentage);
+            // Add the coupon to the database
       }
 
       return (
             <div>
-                  // Form to generate new discount coupon
                   <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20" onSubmit={addDiscountCoupon}>
                         <h2 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Generate new discount coupon</h2>
                         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
